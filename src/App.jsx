@@ -3,7 +3,8 @@ import './App.css'
 
 const App = () => {
   let url = `https://quizapi.io/api/v1/questions?apiKey=6rH1SDnBsOG7J0sjCKkgTuvC6Q83Zscrto7xbCcX&difficulty=Medium&limit=10`;
-  const [data,setdata] = useState([]); 
+  const [data,setdata] = useState([]);
+  const [selectanswer, setSelectanswer] = useState(''); 
 
   useEffect(() => {
 
@@ -34,28 +35,28 @@ const App = () => {
           )}</h3>
           </div>
           <div className='ans-window'>
-            <h3 className='options' id='option1'>
+            <h3  onClick={()=>setSelectanswer('a')} className={selectanswer === 'a'? 'active': 'options'} id='option1'>
               {
                 data.length > 0 ? (
                   <h3>{`a) ${data[0].answers.answer_a}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
-            <h3 className='options' id='option2'>
+            <h3 onClick={()=>setSelectanswer('b')} className={selectanswer === 'b'? 'active': 'options'} id='option2'>
             {
                 data.length > 0 ? (
                   <h3>{`b) ${data[0].answers.answer_b}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
-            <h3 className='options' id='option3'>
+            <h3 onClick={()=>setSelectanswer('c')} className={selectanswer === 'c'? 'active': 'options'} id='option3'>
             {
                 data.length > 0 ? (
-                  <h3>{`c) ${data[0].answers.answer_c}`}</h3>
+                  <h3 >{`c) ${data[0].answers.answer_c}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
-            <h3 className='options' id='option4'>
+            <h3 onClick={()=>setSelectanswer('d')} className={selectanswer === 'd'? 'active': 'options'} id='option4'>
             {
                 data.length > 0 ? (
                   <h3>{`d) ${data[0].answers.answer_d}`}</h3>
