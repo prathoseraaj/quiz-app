@@ -5,6 +5,9 @@ const App = () => {
   let url = `https://quizapi.io/api/v1/questions?apiKey=6rH1SDnBsOG7J0sjCKkgTuvC6Q83Zscrto7xbCcX&difficulty=Medium&limit=10`;
   const [data,setdata] = useState([]);
   const [selectanswer, setSelectanswer] = useState(''); 
+  const [correctAnswer, setCorrectAnswer] = useState('');
+  const [total, setTotal] = useState(0);
+
 
   useEffect(() => {
 
@@ -14,6 +17,12 @@ const App = () => {
         const data = await response.json();
         console.log(data);
         setdata(data);
+        for (let key in data[0]) {
+          if (key.includes("_correct") && data[0][key] === "true") {
+            setCorrectAnswer(key.split('_')[0]);
+            console.log(correctAnswer)
+          }
+        }
       } catch (error) {
         console.error("Error fetching quiz data:", error);
       }
@@ -65,6 +74,9 @@ const App = () => {
             </h3>
           </div>
         </div>
+        <button>
+          
+        </button>
       </div>
     </div>
   );
