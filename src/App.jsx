@@ -37,28 +37,28 @@ const App = () => {
             <h3 className='options' id='option1'>
               {
                 data.length > 0 ? (
-                  <h3>{data[0].answers.answer_a}</h3>
+                  <h3>{`a) ${data[0].answers.answer_a}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
             <h3 className='options' id='option2'>
             {
                 data.length > 0 ? (
-                  <h3>{data[0].answers.answer_b}</h3>
+                  <h3>{`b) ${data[0].answers.answer_b}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
             <h3 className='options' id='option3'>
             {
                 data.length > 0 ? (
-                  <h3>{data[0].answers.answer_c}</h3>
+                  <h3>{`c) ${data[0].answers.answer_c}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
             <h3 className='options' id='option4'>
             {
                 data.length > 0 ? (
-                  <h3>{data[0].answers.answer_d}</h3>
+                  <h3>{`d) ${data[0].answers.answer_d}`}</h3>
                 ):<h4>Loding...</h4>
               }
             </h3>
