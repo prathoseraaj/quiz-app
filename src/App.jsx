@@ -75,7 +75,7 @@ const App = () => {
           </div>
         </div>
         <button>
-          
+          Next
         </button>
       </div>
     </div>
