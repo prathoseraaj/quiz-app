@@ -74,7 +74,7 @@ const App = () => {
             </h3>
           </div>
         </div>
-        <button>
+        <button className='button'>
           Next
         </button>
       </div>
