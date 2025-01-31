@@ -8,8 +8,9 @@ body{
 }
 
 .quiz-container{
-  width: 500px;
+  width: 700px;
   background-color: rgb(0, 0, 0);
-  height: 40vh;
-  text-align: center;
+  height: 60vh;
+  text-align: start;
+  padding: 20px;
 }

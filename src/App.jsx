@@ -25,13 +25,45 @@ const App = () => {
     <div>
       <div className='quiz-container'>
         <h1>Quiz App</h1>
-          <div className='quesans-window'>
-            <h4>          {data.length > 0 ? (
-            <h4>{data[0].question}</h4>  
+        <div>
+          <div className='ques-window'>
+            <h3>          {data.length > 0 ? (
+            <h3>{`Q) ${data[0].question}`}</h3>  
           ) : (
             <h4>Loading...</h4>  
-          )}</h4>
+          )}</h3>
           </div>
+          <div className='ans-window'>
+            <h3 className='options' id='option1'>
+              {
+                data.length > 0 ? (
+                  <h3>{data[0].answers.answer_a}</h3>
+                ):<h4>Loding...</h4>
+              }
+            </h3>
+            <h3 className='options' id='option2'>
+            {
+                data.length > 0 ? (
+                  <h3>{data[0].answers.answer_b}</h3>
+                ):<h4>Loding...</h4>
+              }
+            </h3>
+            <h3 className='options' id='option3'>
+            {
+                data.length > 0 ? (
+                  <h3>{data[0].answers.answer_c}</h3>
+                ):<h4>Loding...</h4>
+              }
+            </h3>
+            <h3 className='options' id='option4'>
+            {
+                data.length > 0 ? (
+                  <h3>{data[0].answers.answer_d}</h3>
+                ):<h4>Loding...</h4>
+              }
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
   );
