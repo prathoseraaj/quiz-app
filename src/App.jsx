@@ -4,7 +4,7 @@ import './App.css'
 const App = () => {
   let url = `https://quizapi.io/api/v1/questions?apiKey=6rH1SDnBsOG7J0sjCKkgTuvC6Q83Zscrto7xbCcX&difficulty=Medium&limit=10`;
   const [data,setdata] = useState([]);
-  const [quenumber, SetQuenumber] = useState(0);
+  const [quenumber, setQuenumber] = useState(0);
   const [selectanswer, setSelectanswer] = useState(''); 
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [total, setTotal] = useState(0);
@@ -77,7 +77,7 @@ const App = () => {
           </div>
         </div>
         <button className='button'
-                onClick={()=>setQuenumber}
+                onClick={()=>setQuenumber(quenumber+1)}
                 >
           Next
         </button>
