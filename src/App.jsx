@@ -42,6 +42,7 @@ const App = () => {
     <div>
       <div className='quiz-container'>
         <h1>Quiz App</h1>
+        {quenumber === 9 ? <h1>{total}</h1>: 
         <div>
           <div className='ques-window'>
             <h3>          {data.length > 0 ? (
@@ -80,13 +81,13 @@ const App = () => {
               }
             </h3>
           </div>
-        </div>
-        <button className='button'
+          <button className='button'
                 onClick={()=>setQuenumber(quenumber+1)}
                 >
           Next
         </button>
-      </div>
+        </div>  }
+      </div> 
     </div>
   );
 };
