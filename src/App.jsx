@@ -33,9 +33,13 @@ const App = () => {
     fetchQuiz(); 
   }, []); 
 
-  if(setSelectanswer === setCorrectAnswer){
-    setTotal(total + 1)
-  }
+  const handleNextQuestion = () => {
+    if (selectanswer === correctAnswer) {
+      setTotal(prevTotal => prevTotal + 1);
+    }
+    setQuenumber(prev => prev + 1);
+    setSelectanswer(''); 
+  };
 
 
   return (
@@ -81,11 +85,9 @@ const App = () => {
               }
             </h3>
           </div>
-          <button className='button'
-                onClick={()=>setQuenumber(quenumber+1)}
-                >
-          Next
-        </button>
+          <button className='button' onClick={handleNextQuestion} disabled={!selectanswer}>
+  Next
+</button>
         </div>  }
       </div> 
     </div>
