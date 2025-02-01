@@ -8,6 +8,7 @@ const App = () => {
   const [selectanswer, setSelectanswer] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [total, setTotal] = useState(0);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   const answerdata = ['answer_a_correct','answer_b_correct','answer_c_correct','answer_d_correct'];
 
@@ -40,19 +41,25 @@ const App = () => {
   }, [quenumber, data]);
 
   function handleNextQuestion() {
-  if (selectanswer === correctAnswer) {
-    setTotal(prevTotal => prevTotal + 1);
+    if (selectanswer === correctAnswer) {
+      setTotal(prevTotal => prevTotal + 1);
+    }
+    if (quenumber === 9) {
+      setQuizCompleted(true);
+    } else {
+      setQuenumber(prev => prev + 1);
+      setSelectanswer('');
+    }
   }
-  setQuenumber(prev => prev + 1);
-  setSelectanswer('');
-}
+
 
 
   return (
     <div>
       <div className='quiz-container'>
         <h1>Quiz App</h1>
-        {quenumber === 9 ? <h1>{total}</h1> :
+        {quizCompleted ? (
+          <h2>Your Total Score: {total} / 10</h2>):(
           <div>
             <div className='ques-window'>
               <h3>          {data.length > 0 ? (
@@ -92,9 +99,9 @@ const App = () => {
               </h3>
             </div>
             <button className='button' onClick={handleNextQuestion} >
-              Next
+            {quenumber === 9 ? 'Finish Quiz' : 'Next'}
             </button>
-          </div>}
+          </div>)}
       </div>
     </div>
   );
