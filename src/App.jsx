@@ -9,7 +9,7 @@ const App = () => {
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [total, setTotal] = useState(0);
 
-
+  const answerdata = ['answer_a_correct','answer_b_correct','answer_c_correct','answer_d_correct'];
 
   useEffect(() => {
 
@@ -19,27 +19,33 @@ const App = () => {
         const data = await response.json();
         console.log(data);
         setdata(data);
-        for (let key in data[quenumber]) {
-          if (key.includes("_correct") && data[quenumber][key] === "true") {
-            setCorrectAnswer(key.split('_')[quenumber]);
-            console.log(correctAnswer)
-          }
         }
-      } catch (error) {
+       catch (error) {
         console.error("Error fetching quiz data:", error);
       }
-    };
+    }
 
     fetchQuiz();
-  }, []);
+}, []);
 
-  const handleNextQuestion = () => {
-    if (selectanswer === correctAnswer) {
-      setTotal(prevTotal => prevTotal + 1);
+  useEffect(() => {
+    if (data.length > 0) {
+      
+      const correctKey = answerdata.find(
+        key => data[quenumber].correct_answers[key] === "true"
+      );
+      
+      setCorrectAnswer(correctKey ? correctKey.split('_correct')[0] : '');
     }
-    setQuenumber(prev => prev + 1);
-    setSelectanswer('');
-  };
+  }, [quenumber, data]);
+
+  function handleNextQuestion() {
+  if (selectanswer === correctAnswer) {
+    setTotal(prevTotal => prevTotal + 1);
+  }
+  setQuenumber(prev => prev + 1);
+  setSelectanswer('');
+}
 
 
   return (
@@ -85,7 +91,7 @@ const App = () => {
                 }
               </h3>
             </div>
-            <button className='button' onClick={handleNextQuestion} disabled={!selectanswer}>
+            <button className='button' onClick={handleNextQuestion} >
               Next
             </button>
           </div>}
