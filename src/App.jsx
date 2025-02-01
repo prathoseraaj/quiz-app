@@ -33,6 +33,11 @@ const App = () => {
     fetchQuiz(); 
   }, []); 
 
+  if(setSelectanswer === setCorrectAnswer){
+    setTotal(total + 1)
+  }
+
+
   return (
     <div>
       <div className='quiz-container'>
