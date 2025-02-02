@@ -32,17 +32,16 @@ const App = () => {
   useEffect(() => {
     if (data.length > 0) {
       
-      const correctKey = answerdata.find(
+      const correctKey = Object.keys(data[quenumber].correct_answers).find(
         key => data[quenumber].correct_answers[key] === "true"
       );
-      
-      setCorrectAnswer(correctKey ? correctKey.split('_correct')[0] : '');
+      setCorrectAnswer(correctKey ? correctKey.replace("_correct", "").split("_")[1] : '');      
     }
   }, [quenumber, data]);
 
   function handleNextQuestion() {
     if (selectanswer === correctAnswer) {
-      setTotal(prevTotal => prevTotal + 1);
+      setTotal(prevTotal => prevTotal + 1); 
     }
     if (quenumber === 9) {
       setQuizCompleted(true);
@@ -50,9 +49,7 @@ const App = () => {
       setQuenumber(prev => prev + 1);
       setSelectanswer('');
     }
-  }
-
-
+  } 
 
   return (
     <div>
