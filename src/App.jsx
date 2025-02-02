@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 
 const App = () => {
@@ -9,10 +9,13 @@ const App = () => {
   const [correctAnswer, setCorrectAnswer] = useState('');
   const [total, setTotal] = useState(0);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const hasFetchedData = useRef(false);
 
   const answerdata = ['answer_a_correct', 'answer_b_correct', 'answer_c_correct', 'answer_d_correct'];
 
   useEffect(() => {
+    if (hasFetchedData.current) return;  
+    hasFetchedData.current = true;
     const fetchQuiz = async () => {
       try {
         const response = await fetch(url);
